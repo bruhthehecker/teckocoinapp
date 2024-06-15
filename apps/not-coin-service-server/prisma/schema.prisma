@@ -1,0 +1,58 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Leaderboard {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model Referral {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model Profile {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  accountBalance Float?
+  balance        Float?
+  chatId         String?
+  createdAt      DateTime @default(now())
+  email          String?  @unique
+  firstName      String?
+  id             String   @id @default(cuid())
+  lastName       String?
+  password       String
+  points         Int?
+  pointsCount    Int?
+  referralCount  Int?
+  referrals      Int?
+  roles          Json
+  updatedAt      DateTime @updatedAt
+  username       String   @unique
+  userPoints     Int?
+}
+
+model GameSession {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model CoinTransaction {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
